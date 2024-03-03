@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import OrderCard from "./OrderCard";
+import OrderCard from "./OrderCard/OrderCard";
 
 export default function ColumnReadyToBeServed() {
   const fetchFinishedOrders = async () => {
@@ -14,10 +14,9 @@ export default function ColumnReadyToBeServed() {
     }
   };
 
-  const { isLoading, error, data, isSuccess } = useQuery(
-    "finished-orders",
-    fetchFinishedOrders
-  );
+  const { data, isSuccess } = useQuery("finished-orders", fetchFinishedOrders, {
+    refetchInterval: 3000,
+  });
 
   return (
     <div>

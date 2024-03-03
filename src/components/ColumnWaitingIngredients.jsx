@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import OrderCard from "./OrderCard";
+import OrderCard from "./OrderCard/OrderCard";
 
 export default function ColumnWaitingIngredients() {
   const fetchPendingOrders = async () => {
@@ -14,12 +14,9 @@ export default function ColumnWaitingIngredients() {
     }
   };
 
-  const { isLoading, error, data, isSuccess } = useQuery(
-    "pending-orders",
-    fetchPendingOrders
-  );
-
-  console.log(data);
+  const { data, isSuccess } = useQuery("pending-orders", fetchPendingOrders, {
+    refetchInterval: 3000,
+  });
 
   return (
     <div>
