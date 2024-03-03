@@ -4,7 +4,7 @@ import { fetchStatistics } from "../../fetch/fetch";
 
 export default function ColumnStatistics() {
   const { data, isSuccess } = useQuery("statistics", fetchStatistics, {
-    // refetchInterval: 3000,
+    refetchInterval: 3000,
   });
 
   return (
