@@ -1,10 +1,28 @@
+import axios from "axios";
+import { useMutation } from "react-query";
+
 function App() {
+  const mutation = useMutation(() => {
+    return axios.post("http://127.0.0.1:8001/api/orders");
+  });
+
   return (
     <div className="bg-gray-100 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+        <h1 className="text-3xl text-center font-extrabold text-gray-900 sm:text-4xl">
           Bienvenidos
         </h1>
+        {/* Botón "Pedir un plato" */}
+        <div className="mt-10 flex justify-center">
+          <button
+            onClick={() => {
+              mutation.mutate();
+            }}
+            className="bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-6 rounded-lg shadow-md"
+          >
+            Pedir un plato
+          </button>
+        </div>
         <div className="mt-10 grid grid-cols-2 gap-10">
           {/* Columna 1: Esperando ingredientes */}
           <div>
@@ -84,12 +102,6 @@ function App() {
               </div>
             </div>
           </div>
-        </div>
-        {/* Botón "Pedir un plato" */}
-        <div className="mt-10 flex justify-center">
-          <button className="bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-6 rounded-lg shadow-md">
-            Pedir un plato
-          </button>
         </div>
       </div>
     </div>
