@@ -1,4 +1,25 @@
+import axios from "axios";
+import { useQuery } from "react-query";
+
 export default function ColumnWaitingIngredients() {
+  const fetchPendingOrders = async () => {
+    try {
+      const response = await axios.get(
+        "http://127.0.0.1:8001/api/orders/pending-orders"
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error("Error al cargar los datos");
+    }
+  };
+
+  const { isLoading, error, data } = useQuery(
+    "pending-orders",
+    fetchPendingOrders
+  );
+
+  console.log(data);
+
   return (
     <div>
       <h2 className="text-lg font-semibold text-gray-900 mb-4">
