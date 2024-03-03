@@ -1,10 +1,20 @@
 import axios from "axios";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 
 export default function MainButton() {
-  const mutation = useMutation(() => {
-    return axios.post("http://127.0.0.1:8001/api/orders");
-  });
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation(
+    () => {
+      return axios.post("http://127.0.0.1:8001/api/orders");
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("pending-orders");
+        queryClient.invalidateQueries("finished-orders");
+      },
+    }
+  );
 
   return (
     <button
