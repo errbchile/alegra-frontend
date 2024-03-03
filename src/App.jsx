@@ -1,11 +1,6 @@
-import axios from "axios";
-import { useMutation } from "react-query";
+import MainButton from "./components/MainButton";
 
 function App() {
-  const mutation = useMutation(() => {
-    return axios.post("http://127.0.0.1:8001/api/orders");
-  });
-
   return (
     <div className="bg-gray-100 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -14,14 +9,7 @@ function App() {
         </h1>
         {/* Botón "Pedir un plato" */}
         <div className="mt-10 flex justify-center">
-          <button
-            onClick={() => {
-              mutation.mutate();
-            }}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-6 rounded-lg shadow-md"
-          >
-            Pedir un plato
-          </button>
+          <MainButton />
         </div>
         <div className="mt-10 grid grid-cols-2 gap-10">
           {/* Columna 1: Esperando ingredientes */}
