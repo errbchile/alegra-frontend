@@ -1,5 +1,6 @@
 export type OrderCardProps = {
   order: OrderType;
+  backgroundColor?: string;
 };
 
 export type OrderType = {

@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import { fetchStatistics } from "../../fetch/fetch";
 
-export default function ColumnStatistics() {
+export default function ColumnAvailableIngredients() {
   const { data, isSuccess } = useQuery("statistics", fetchStatistics, {
     refetchInterval: 1000,
   });
@@ -10,27 +10,11 @@ export default function ColumnStatistics() {
   return (
     <>
       <h2 className="text-lg font-semibold text-gray-900 mb-4 text-center">
-        Estadisticas
+        Ingredientes Disponibles
       </h2>
       <div className="flex flex-col gap-2">
         {isSuccess && (
           <>
-            <div className="bg-blue-500 rounded-lg shadow-md p-4 flex justify-center items-center gap-2">
-              <span className="text-md font-semibold text-white">
-                Ingredientes comprados:
-              </span>
-              <span className="text-2xl font-bold text-white">
-                {data.total_used_ingredients}
-              </span>
-            </div>
-            <div className="bg-blue-500 rounded-lg shadow-md p-4 flex justify-center items-center gap-2">
-              <span className="text-md font-semibold text-white">
-                Ingredientes en inventario:
-              </span>
-              <span className="text-2xl font-bold text-white">
-                {data.total_ingredients_in_inventory}
-              </span>
-            </div>
             {data.total_available.map((inventory) => {
               return (
                 <div
@@ -47,6 +31,22 @@ export default function ColumnStatistics() {
                 </div>
               );
             })}
+            <div className="bg-blue-500 rounded-lg shadow-md p-4 flex justify-center items-center gap-2">
+              <span className="text-md font-semibold text-white">
+                Ingredientes comprados:
+              </span>
+              <span className="text-2xl font-bold text-white">
+                {data.total_used_ingredients}
+              </span>
+            </div>
+            <div className="bg-blue-500 rounded-lg shadow-md p-4 flex justify-center items-center gap-2">
+              <span className="text-md font-semibold text-white">
+                Ingredientes en inventario:
+              </span>
+              <span className="text-2xl font-bold text-white">
+                {data.total_ingredients_in_inventory}
+              </span>
+            </div>
           </>
         )}
       </div>

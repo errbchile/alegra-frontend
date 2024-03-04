@@ -12,6 +12,15 @@ export const fetchStatistics = async () => {
   }
 };
 
+export const fetchPurchases = async () => {
+  try {
+    const response = await axios.get(`${apiBodega}/api/purchases`);
+    return response.data;
+  } catch (error) {
+    throw new Error("Error al cargar los datos");
+  }
+};
+
 export const fetchFinishedOrders = async () => {
   try {
     const response = await axios.get(`${apiCocina}/api/orders/finished-orders`);

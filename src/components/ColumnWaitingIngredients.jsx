@@ -14,7 +14,7 @@ export default function ColumnWaitingIngredients() {
       </h2>
       {isSuccess &&
         data.data.map((order) => {
-          return <OrderCard key={order.id} order={order} />;
+          return <OrderCard key={order.id} order={order} backgroundColor="bg-yellow-100" />;
         })}
     </div>
   );
