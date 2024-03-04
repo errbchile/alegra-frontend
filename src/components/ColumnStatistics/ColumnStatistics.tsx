@@ -33,17 +33,18 @@ export default function ColumnStatistics() {
             </div>
             {data.total_available.map((inventory) => {
               return (
-                <>
-                  <div className="bg-blue-500 rounded-lg shadow-md p-4 flex justify-center items-center gap-2">
-                    <span className="text-sm font-bold text-white flex flex-col">
-                      <p>
-                        {inventory.id}) {inventory.name}:
-                      </p>
-                      <p>Disponible: {inventory.total_available}</p>
-                      <p>Comprado: {inventory.total_bought}</p>
-                    </span>
-                  </div>
-                </>
+                <div
+                  key={inventory.id}
+                  className="bg-blue-500 rounded-lg shadow-md p-4 flex justify-center items-center gap-2"
+                >
+                  <span className="text-sm font-bold text-white flex flex-col">
+                    <p>
+                      {inventory.id}) {inventory.name}:
+                    </p>
+                    <p>Disponible: {inventory.total_available}</p>
+                    <p>Comprado: {inventory.total_bought}</p>
+                  </span>
+                </div>
               );
             })}
           </>

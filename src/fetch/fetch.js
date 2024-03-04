@@ -1,8 +1,11 @@
 import axios from "axios";
 
+const apiCocina = "http://127.0.0.1:8001";
+const apiBodega = "http://127.0.0.1:8000";
+
 export const fetchStatistics = async () => {
   try {
-    const response = await axios.get("http://127.0.0.1:8000/api/statistics");
+    const response = await axios.get(`${apiBodega}/api/statistics`);
     return response.data;
   } catch (error) {
     throw new Error("Error al cargar los datos");
@@ -11,9 +14,7 @@ export const fetchStatistics = async () => {
 
 export const fetchFinishedOrders = async () => {
   try {
-    const response = await axios.get(
-      "http://127.0.0.1:8001/api/orders/finished-orders"
-    );
+    const response = await axios.get(`${apiCocina}/api/orders/finished-orders`);
     return response.data;
   } catch (error) {
     throw new Error("Error al cargar los datos");
@@ -22,9 +23,7 @@ export const fetchFinishedOrders = async () => {
 
 export const fetchPendingOrders = async () => {
   try {
-    const response = await axios.get(
-      "http://127.0.0.1:8001/api/orders/pending-orders"
-    );
+    const response = await axios.get(`${apiCocina}/api/orders/pending-orders`);
     return response.data;
   } catch (error) {
     throw new Error("Error al cargar los datos");
