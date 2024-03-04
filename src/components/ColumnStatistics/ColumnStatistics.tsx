@@ -4,7 +4,7 @@ import { fetchStatistics } from "../../fetch/fetch";
 
 export default function ColumnStatistics() {
   const { data, isSuccess } = useQuery("statistics", fetchStatistics, {
-    refetchInterval: 3000,
+    refetchInterval: 1000,
   });
 
   return (
@@ -32,7 +32,6 @@ export default function ColumnStatistics() {
               </span>
             </div>
             {data.total_available.map((inventory) => {
-              console.log(inventory);
               return (
                 <>
                   <div className="bg-blue-500 rounded-lg shadow-md p-4 flex justify-center items-center gap-2">
