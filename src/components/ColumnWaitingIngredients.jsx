@@ -10,7 +10,7 @@ export default function ColumnWaitingIngredients() {
   return (
     <div>
       <h2 className="text-lg font-semibold text-gray-900 mb-4 text-center">
-        Esperando ingredientes
+        En cocina esperando ingredientes
       </h2>
       {isSuccess &&
         data.data.map((order) => {
