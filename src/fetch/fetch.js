@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const apiCocina = "http://127.0.0.1:8001";
-const apiBodega = "http://127.0.0.1:8000";
+const apiCocina = import.meta.env.VITE_API_COCINA;
+const apiBodega = import.meta.env.VITE_API_BODEGA;
 
 export const fetchStatistics = async () => {
   try {
