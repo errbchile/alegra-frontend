@@ -10,7 +10,7 @@ export default function DishDetail({ dish }) {
           </h3>
           <ul>
             {dish.ingredients.map((ingredient) => (
-              <li key={ingredient.id}>
+              <li className="text-xs" key={ingredient.id}>
                 {ingredient.name} ({ingredient.pivot.quantity})
               </li>
             ))}
